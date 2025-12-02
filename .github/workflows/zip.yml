@@ -30,8 +30,8 @@ jobs:
         id: release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: latest
-          name: Latest Resource Pack
+          tag_name: rp-${{ github.run_number }}
+          name: Reource pack number ${{ github.run_number }}
           body: "SHA1: ${{ env.SHA1 }}"
           files: rp.zip
         env:
