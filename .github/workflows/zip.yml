@@ -19,7 +19,7 @@ jobs:
           zip -r rp.zip . -x ".git/*" ".github/*"
 
       - name: Upload ZIP as artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: rp-zip
           path: rp.zip
