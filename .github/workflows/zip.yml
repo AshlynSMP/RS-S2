@@ -22,8 +22,9 @@ jobs:
           zip -r rp.zip . -x ".git/*" ".github/*"
 
       - name: Generate SHA1 hash
+        id: sha
         run: |
-          sha1sum rp.zip | awk '{print $1}' > rp.sha1
+          echo "SHA1=$(sha1sum rp.zip | awk '{print $1}')" >> $GITHUB_ENV
 
       - name: Create Release
         id: release
@@ -31,8 +32,7 @@ jobs:
         with:
           tag_name: latest
           name: Latest Resource Pack
-          files: |
-            rp.zip
-            rp.sha1
+          body: "SHA1: ${{ env.SHA1 }}"
+          files: rp.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
