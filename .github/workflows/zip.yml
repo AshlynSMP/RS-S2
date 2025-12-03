@@ -17,6 +17,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Get commit hash
+        id: commit
+        run: |
+          echo "COMMIT_HASH=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+
+      - name: Inject commit hash into pack.mcmeta
+        run: |
+          sed -i "s/{COMMIT_HASH}/${{ env.COMMIT_HASH }}/g" pack.mcmeta
+
       - name: Create ZIP file
         run: |
           zip -r rp.zip . -x ".git/*" ".github/*"
@@ -32,7 +41,8 @@ jobs:
         with:
           tag_name: rp-${{ github.run_number }}
           name: Resource Pack Build ${{ github.run_number }}
-          body: "SHA1: ${{ env.SHA1 }}"
+          body: |
+            SHA1: ${{ env.SHA1 }}
           files: rp.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
