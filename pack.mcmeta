@@ -1,6 +1,6 @@
 {
   "pack": {
-    "description": "§5Ashlyn SMP Seizoen 2\n§e{COMMIT_HASH}",
+    "description": "§e{COMMIT_HASH}",
     "min_format": [69, 0], 
     "max_format": [2147483647, 0]
   }
