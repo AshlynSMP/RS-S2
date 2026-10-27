@@ -242,6 +242,13 @@
             "ascent": 13,
             "height": 25,
             "chars": ["幕壱"]
+        },
+        {
+            "type": "bitmap",
+            "file": "ashlynsmp:titles/uitgeschakeld.png",
+            "ascent": 20,
+            "height": 40,
+            "chars": ["敗退"]
         }
   ]
 }
